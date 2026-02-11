@@ -1,0 +1,62 @@
+# AIHub 15 Keypoints Definition
+# Code uses 0-based index matching AIHub dataset labeling
+keypoints:
+  0: "Nose"            # 코
+  1: "Forehead"        # 이마 정 중앙
+  2: "Mouth"           # 입꼬리(입끝)
+  3: "Lip"             # 아래 입술 중앙
+  4: "Neck"            # 목
+  5: "R_F_Start"       # 앞다리 오른쪽 시작
+  6: "L_F_Start"       # 앞다리 왼쪽 시작
+  7: "R_F_Ankle"       # 앞다리 오른쪽 발목
+  8: "L_F_Ankle"       # 앞다리 왼쪽 발목
+  9: "R_B_Thigh"       # 오른쪽 대퇴골
+  10: "L_B_Thigh"      # 왼쪽 대퇴골
+  11: "R_B_Ankle"      # 뒷다리 오른쪽 발목
+  12: "L_B_Ankle"      # 뒷다리 왼쪽 발목
+  13: "Tail_Start"     # 꼬리 시작
+  14: "Tail_Tip"       # 꼬리 끝 (Generated)
+
+# Color Map (BGR)
+# Face: Red, Body: Purple, Front Limbs: Green, Back Limbs: Blue, Tail: Yellow
+keypoint_colors:
+  - [0, 0, 255]   # 0: Nose (Red)
+  - [0, 0, 255]   # 1: Forehead
+  - [0, 0, 255]   # 2: Mouth
+  - [0, 0, 255]   # 3: Lip
+  - [255, 0, 255] # 4: Neck (Purple)
+  
+  - [0, 255, 0]   # 5: R_F_Start (Green)
+  - [0, 255, 0]   # 6: L_F_Start
+  - [0, 255, 0]   # 7: R_F_Ankle
+  - [0, 255, 0]   # 8: L_F_Ankle
+  
+  - [255, 0, 0]   # 9: R_B_Thigh (Blue)
+  - [255, 0, 0]   # 10: L_B_Thigh
+  - [255, 0, 0]   # 11: R_B_Ankle
+  - [255, 0, 0]   # 12: L_B_Ankle
+  
+  - [0, 255, 255] # 13: Tail_Start (Yellow)
+  - [0, 255, 255] # 14: Tail_Tip
+
+# Skeleton Links used by Visualizer
+# Format: [start_index, end_index]
+skeleton_links:
+  - [1, 0] # Forehead -> Nose
+  - [0, 2] # Nose -> Mouth
+  - [0, 3] # Nose -> Lip
+  - [1, 4] # Forehead -> Neck
+  - [4, 13] # Neck -> Tail_Start
+  - [13, 14] # Tail_Start -> Tail_Tip (Generated)
+  
+  - [4, 5] # Neck -> R_F_Start
+  - [5, 7] # R_F_Start -> R_F_Ankle
+  
+  - [4, 6] # Neck -> L_F_Start
+  - [6, 8] # L_F_Start -> L_F_Ankle
+  
+  - [13, 9] # Tail_Start -> R_B_Thigh
+  - [9, 11] # R_B_Thigh -> R_B_Ankle
+  
+  - [13, 10] # Tail_Start -> L_B_Thigh
+  - [10, 12] # L_B_Thigh -> L_B_Ankle

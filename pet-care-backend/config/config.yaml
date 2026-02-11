@@ -1,0 +1,46 @@
+# Pet Care V3 Configuration
+
+project_root: "/home/hajun/dev_ws/pet-care-robot/v3/pet-care-backend"
+
+model:
+  yolo:
+    version: "yolo26"
+    name: "yolo26m.pt"
+
+  pose:
+    path: "src/models/best.pt"
+
+  checkpoints:
+    dir: "src/ai/checkpoints"
+    cat_binary: "hierarchical_cat_binary.pth"
+    cat_negative: "hierarchical_cat_negative.pth"
+    dog_binary: "hierarchical_dog_binary.pth"
+    dog_negative: "hierarchical_dog_negative.pth"
+
+species:
+  - "dog"
+  - "cat"
+
+pipeline:
+  sampling_rate: 5
+  sequence_length: 30
+  smoothing_window: 20
+  neg_trigger_seconds: 3
+  log_interval_seconds: 5
+
+camera:
+  index: 0
+  width: 1280
+  height: 720
+
+coco_classes:
+  dog: 16
+  cat: 15
+
+thresholds:
+  cat_binary: 0.60
+  dog_binary: 0.40
+  iou_match: 0.3
+  detection_conf: 0.4
+  pose_conf: 0.3
+  keypoint_conf: 0.3
